@@ -13,36 +13,33 @@ public class TorneoDaoMock implements ITorneoDao {
     public boolean authenticate(String alias, String password) {
         // TODO 01: Implementar la autenticación de usuario
 
-
-
-
-
-
-
+        for (Usuario usuario : usuarios) {
+            if (usuario != null && usuario.getAlias().equalsIgnoreCase(alias) && usuario.getPassword().equals(password)){
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public Usuario getUsuarioByAlias(String alias) {
         // TODO 02: Implementar la búsqueda de usuario por alias
-
-
-
-
-
-
+        for (Usuario usuario : usuarios) {
+            if (usuario != null && usuario.getAlias().equalsIgnoreCase(alias)){
+                return usuario;
+            }
+        }
         return null;
     }
 
     @Override
     public Usuario getUsuarioByNombre(String nombre) {
         // TODO 03: Implementar la búsqueda de usuario por nombre
-
-
-
-
-
-
+        for (Usuario usuario : usuarios) {
+            if (usuario != null && usuario.getNombre().equalsIgnoreCase(nombre)){
+                return usuario;
+            }
+        }
         return null;
     }
 

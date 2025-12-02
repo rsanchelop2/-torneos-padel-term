@@ -1,6 +1,7 @@
 package edu.masanz.da.torneo.dao;
 
 import java.util.Arrays;
+import java.util.IllegalFormatCodePointException;
 
 import edu.masanz.da.torneo.model.*;
 
@@ -49,26 +50,31 @@ public class TorneoDaoMock implements ITorneoDao {
         // Este array no debe tener referencias nulas y su tamaño debe ser el justo
         TorneoFaseDto[] a = new TorneoFaseDto[torneos.length];
         int k = 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        for (int i = 0; i < torneos.length; i++) {
+            Torneo t = torneos[i];
+            if (t != null){
+                int idFase = t.getFase();
+                String nombreFaseTorneo = null;
+                // Busca la fase que le corresponde:
+                for (int j = 0; j < fases.length; j++) {
+                    Fase f = fases[j];
+                    if (f.getId() == idFase){
+                        nombreFaseTorneo = f.getNombre();
+                    }
+                }
+                TorneoFaseDto tf = new TorneoFaseDto(t.getId(), t.getNombre(), nombreFaseTorneo);
+                a[k] = tf;
+                k++;
+            }
+        }
         return Arrays.copyOfRange(a, 0, k);
     }
 
     private String getNombreEquipo(int idEquipo) {
         // TODO 05: Implementar la obtención del nombre del equipo por su id
-
+        for (Usuario usuario : usuarios) {
+            
+        }
 
 
 
@@ -80,12 +86,11 @@ public class TorneoDaoMock implements ITorneoDao {
     @Override
     public Torneo getTorneo(int idTorneo) {
         // TODO 06: Implementar la búsqueda de torneo por id
-
-
-
-
-
-
+        for (Torneo torneo : torneos) {
+            if (torneo.equals(idTorneo)){
+                return torneo;
+            }
+        }
         return null;
     }
 

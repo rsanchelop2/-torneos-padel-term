@@ -73,13 +73,11 @@ public class TorneoDaoMock implements ITorneoDao {
     private String getNombreEquipo(int idEquipo) {
         // TODO 05: Implementar la obtención del nombre del equipo por su id
         for (Usuario usuario : usuarios) {
-            
+            if (usuario.getId() == idEquipo){
+                String nomEquipo = usuario.getNombre();
+                return nomEquipo;
+            }
         }
-
-
-
-
-
         return "";
     }
 
@@ -97,12 +95,11 @@ public class TorneoDaoMock implements ITorneoDao {
     @Override
     public Torneo getTorneo(String nombreTorneo) {
         // TODO 07: Implementar la búsqueda de torneo por nombre
-
-
-
-
-
-
+        for (Torneo torneo : torneos) {
+            if (torneo.equals(nombreTorneo)){
+                return torneo;
+            }
+        }
         return null;
     }
 

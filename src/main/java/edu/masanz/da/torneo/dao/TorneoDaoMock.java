@@ -106,15 +106,11 @@ public class TorneoDaoMock implements ITorneoDao {
     @Override
     public Fase getFase(int idTorneo) {
         // TODO 08: Implementar la obtención de la fase actual de un torneo
-
-
-
-
-
-
-
-
-
+        for (Fase fase : fases) {
+            if (fase.getId() == idTorneo){
+                return fase;
+            }
+        }
         return null;
     }
 

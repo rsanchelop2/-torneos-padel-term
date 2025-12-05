@@ -117,12 +117,11 @@ public class TorneoDaoMock implements ITorneoDao {
     private int getNumeroRegistrosFase(int idFase) {
         // TODO 09: Implementar la obtención del número de registros (partidos) de una fase
         // Usar el array fases. El número de registros (partidos) es la mitad del número de equipos
-
-
-
-
-
-
+        for (Fase fase : fases) {
+            if (idFase == fase.getId()){
+                return fase.getNumeroEquipos()/2;
+            }
+        }
         return 0;
     }
 

@@ -136,6 +136,13 @@ public class TorneoDaoMock implements ITorneoDao {
 
         RegistroResultadosDto[] rrd = new RegistroResultadosDto[8];
 
+        if (getTorneo(idTorneo) != null){
+            for (int j = 1; j <= getNumeroRegistrosFase(j); j++) {
+                for (int i = 0; i < rrd.length; i++) {
+                    rrd[i] = getResultadosTorneoFase(idTorneo,j);
+                }
+            }
+        }
 
 
 

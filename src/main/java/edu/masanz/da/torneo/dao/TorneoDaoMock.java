@@ -136,11 +136,20 @@ public class TorneoDaoMock implements ITorneoDao {
 
         RegistroResultadosDto[] rrd = new RegistroResultadosDto[8];
 
-        if (getTorneo(idTorneo) != null){
-            for (int j = 1; j <= getNumeroRegistrosFase(j); j++) {
-                for (int i = 0; i < rrd.length; i++) {
-                    rrd[i] = getResultadosTorneoFase(idTorneo,j);
+        if (getTorneo(idTorneo) != null){ // COMPRUEBA QUE EL TORNEO EXISTE
+            for (Registro registro : registros) {
+                String equipo1 = getNombreEquipo(registro.getEquipo1());
+                String equipo2 = getNombreEquipo(registro.getEquipo2());
+                int ganador = registro.getGanador();
+                int[] valor = new int[6];
+                int v = 0;
+                for (Resultado resultado : resultados) {
+                    if (resultado.getRegistro() == registro.getId()){
+                        valor[v++] = resultado.getValor1();
+                        valor[v++] = resultado.getValor2();
+                    }
                 }
+                rrd[]
             }
         }
 
